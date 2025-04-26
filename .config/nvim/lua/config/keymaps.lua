@@ -20,6 +20,7 @@ keymap.set("n", "<leader>tx", "<cmd>tabclose<CR>", { desc = "Close current tab" 
 keymap.set("n", "<tab>", "<cmd>:tabnext<CR>", opts) --  go to next tab
 keymap.set("n", "<s-tab>", "<cmd>:tabprev<Return>", opts) --  go to previous tab
 keymap.set("n", "<leader>tf", "<cmd>tabnew %<CR>", { desc = "Open current buffer in new tab" }) --  move current buffer to new tab
+keymap.set("n", "s", "<Nop>")
 
 -- Diagnostics
 --[[ keymap.set("n", "<C-J>", function()

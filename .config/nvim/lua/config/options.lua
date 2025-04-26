@@ -42,7 +42,14 @@ opt.splitbelow = true
 --  See `:help 'list'`
 --  and `:help 'listchars'`
 opt.list = true
-opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
+-- opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
+opt.listchars = {
+	tab = "▸ ",
+	trail = "·",
+	extends = "»",
+	precedes = "«",
+	nbsp = "␣",
+}
 
 -- Minimal number of screen lines to keep above and below the cursor.
 opt.scrolloff = 10

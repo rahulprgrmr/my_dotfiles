@@ -173,6 +173,8 @@ return {
 			virtual_text = {
 				source = "if_many",
 				spacing = 2,
+				virt_text_pos = "eol_right_align",
+				virtual_text_hide = true,
 				format = function(diagnostic)
 					local diagnostic_message = {
 						[vim.diagnostic.severity.ERROR] = diagnostic.message,
