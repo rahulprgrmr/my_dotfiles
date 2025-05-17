@@ -8,9 +8,10 @@ local config = wezterm.config_builder()
 
 -- For example, changing the color scheme:
 config.color_scheme = "Catppuccin Mocha (Gogh)"
+config.color_scheme = "Monokai Pro Ristretto (Gogh)"
 -- config.color_scheme = "Gruvbox dark, medium (base16)"
 -- config.color_scheme = "Nord (Arctic)"
-config.color_scheme = "Tokyo Night (Gogh)"
+-- config.color_scheme = "Tokyo Night (Gogh)"
 config.line_height = 1.2
 config.font_size = 12
 
@@ -28,7 +29,7 @@ config.colors = {
 
 config.enable_tab_bar = false
 config.hide_tab_bar_if_only_one_tab = true
-config.window_background_opacity = 0.7
+config.window_background_opacity = 0.9
 -- config.window_padding = {
 -- 	top = 0,
 -- 	right = 0,

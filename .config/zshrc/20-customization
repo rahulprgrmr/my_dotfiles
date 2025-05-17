@@ -27,6 +27,7 @@ plugins=(
     docker-compose
     tmux
     extract
+    virtualenv
 )
 
 # Set-up oh-my-zsh

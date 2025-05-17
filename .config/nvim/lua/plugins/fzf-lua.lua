@@ -10,7 +10,7 @@ return {
 			"<leader>ff",
 			function()
 				require("fzf-lua").files({
-					-- cmd = "fd --type f --hidden --follow --no-ignore --exclude .git",
+					cmd = "fd --type f --hidden --follow --no-ignore --exclude .git",
 				})
 			end,
 			desc = "Find Files in project directory",
