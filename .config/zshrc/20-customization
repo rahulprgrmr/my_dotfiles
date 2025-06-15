@@ -28,6 +28,7 @@ plugins=(
     tmux
     extract
     virtualenv
+    python
 )
 
 # Set-up oh-my-zsh
