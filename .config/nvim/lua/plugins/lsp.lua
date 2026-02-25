@@ -243,6 +243,7 @@ return {
 			phpactor = {},
 			prismals = {},
 			yamlls = {},
+			ruff = {},
 		}
 
 		-- Ensure the servers and tools above are installed
@@ -263,9 +264,10 @@ return {
 			"stylua", -- Used to format Lua code
 			"prettierd", -- Used to format javascript and typescript code
 			"prettier", -- Used to format javascript and typescript code
-			"isort", -- Used to sort imports in a python file
+			-- "isort", -- Used to sort imports in a python file
 			"black", -- Used to format python code
 			"pint", -- Used to format php code
+			"djlint", -- Used to format django template code
 		})
 		require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
