@@ -1,8 +1,8 @@
 local opt = vim.opt
 opt.expandtab = true -- Convert tabs to spaces
-opt.shiftwidth = 4 -- Amount to indent with << and >>
-opt.tabstop = 4 -- How many spaces are shown per Tab
-opt.softtabstop = 4 -- How many spaces are applied when pressing Tab
+opt.shiftwidth = 4   -- Amount to indent with << and >>
+opt.tabstop = 4      -- How many spaces are shown per Tab
+opt.softtabstop = 4  -- How many spaces are applied when pressing Tab
 
 opt.smarttab = true
 opt.smartindent = true
@@ -44,11 +44,11 @@ opt.splitbelow = true
 opt.list = true
 -- opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
 opt.listchars = {
-	tab = "▸ ",
-	trail = "·",
-	extends = "»",
-	precedes = "«",
-	nbsp = "␣",
+  tab = "▸ ",
+  trail = "·",
+  extends = "»",
+  precedes = "«",
+  nbsp = "␣",
 }
 
 -- Minimal number of screen lines to keep above and below the cursor.
@@ -59,7 +59,7 @@ opt.scrolloff = 10
 --  Remove this option if you want your OS clipboard to remain independent.
 --  See `:help 'clipboard'`
 vim.schedule(function()
-	opt.clipboard = "unnamedplus"
+  opt.clipboard = "unnamedplus"
 end)
 
 -- -- Enable true colors for the terminal

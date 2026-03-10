@@ -9,6 +9,7 @@ local config = wezterm.config_builder()
 -- For example, changing the color scheme:
 config.color_scheme = "Catppuccin Mocha (Gogh)"
 config.color_scheme = "Monokai Pro Ristretto (Gogh)"
+config.color_scheme = "Everforest Dark (Gogh)"
 -- config.color_scheme = "Gruvbox dark, medium (base16)"
 -- config.color_scheme = "Nord (Arctic)"
 -- config.color_scheme = "Tokyo Night (Gogh)"
