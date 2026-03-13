@@ -1,43 +1,66 @@
-local keymap = vim.keymap
-local opts = { noremap = true, silent = true }
+vim.g.mapleader = " "      -- space for leader
+vim.g.maplocalleader = " " -- space for localleader
 
-keymap.set("n", "-", "<cmd>Oil --float --preview<CR>", { desc = "Open Parent Directory in Oil" })
-keymap.set("n", "gl", function()
-	vim.diagnostic.open_float()
-end, { desc = "Open Diagnostics in Float" })
+-- better movement in wrapped text
+vim.keymap.set("n", "j", function()
+  return vim.v.count == 0 and "gj" or "j"
+end, { expr = true, silent = true, desc = "Down (wrap-aware)" })
+vim.keymap.set("n", "k", function()
+  return vim.v.count == 0 and "gk" or "k"
+end, { expr = true, silent = true, desc = "Up (wrap-aware)" })
 
-keymap.set("n", "<leader>cf", function()
-	require("conform").format({
-		lsp_format = "fallback",
-	})
-end, { desc = "Format current file" })
+vim.keymap.set("n", "<leader>c", ":nohlsearch<CR>", { desc = "Clear search highlights" })
 
--- Select all
-keymap.set("n", "<C-a>", "ggVG")
+vim.keymap.set("n", "n", "nzzzv", { desc = "Next search result (centered)" })
+vim.keymap.set("n", "N", "Nzzzv", { desc = "Previous search result (centered)" })
+vim.keymap.set("n", "<C-d>", "<C-d>zz", { desc = "Half page down (centered)" })
+vim.keymap.set("n", "<C-u>", "<C-u>zz", { desc = "Half page up (centered)" })
 
-keymap.set("n", "<leader>to", "<cmd>tabnew<CR>", { desc = "Open new tab" }) -- open new tab
-keymap.set("n", "<leader>tx", "<cmd>tabclose<CR>", { desc = "Close current tab" }) -- close current tab
-keymap.set("n", "<tab>", "<cmd>:tabnext<CR>", opts) --  go to next tab
-keymap.set("n", "<s-tab>", "<cmd>:tabprev<Return>", opts) --  go to previous tab
-keymap.set("n", "<leader>tf", "<cmd>tabnew %<CR>", { desc = "Open current buffer in new tab" }) --  move current buffer to new tab
-keymap.set("n", "s", "<Nop>")
+vim.keymap.set("x", "<leader>p", '"_dP', { desc = "Paste without yanking" })
+vim.keymap.set({ "n", "v" }, "<leader>x", '"_d', { desc = "Delete without yanking" })
+
+vim.keymap.set("n", "<leader>bn", ":bnext<CR>", { desc = "Next buffer" })
+vim.keymap.set("n", "<leader>bp", ":bprevious<CR>", { desc = "Previous buffer" })
+
+vim.keymap.set("n", "<C-h>", "<C-w>h", { desc = "Move to left window" })
+vim.keymap.set("n", "<C-j>", "<C-w>j", { desc = "Move to bottom window" })
+vim.keymap.set("n", "<C-k>", "<C-w>k", { desc = "Move to top window" })
+vim.keymap.set("n", "<C-l>", "<C-w>l", { desc = "Move to right window" })
+
+vim.keymap.set("n", "<leader>sv", ":vsplit<CR>", { desc = "Split window vertically" })
+vim.keymap.set("n", "<leader>sh", ":split<CR>", { desc = "Split window horizontally" })
+vim.keymap.set("n", "<C-Up>", ":resize +2<CR>", { desc = "Increase window height" })
+vim.keymap.set("n", "<C-Down>", ":resize -2<CR>", { desc = "Decrease window height" })
+vim.keymap.set("n", "<C-Left>", ":vertical resize -2<CR>", { desc = "Decrease window width" })
+vim.keymap.set("n", "<C-Right>", ":vertical resize +2<CR>", { desc = "Increase window width" })
+
+vim.keymap.set("n", "<A-j>", ":m .+1<CR>==", { desc = "Move line down" })
+vim.keymap.set("n", "<A-k>", ":m .-2<CR>==", { desc = "Move line up" })
+vim.keymap.set("v", "<A-j>", ":m '>+1<CR>gv=gv", { desc = "Move selection down" })
+vim.keymap.set("v", "<A-k>", ":m '<-2<CR>gv=gv", { desc = "Move selection up" })
+
+vim.keymap.set("v", "<", "<gv", { desc = "Indent left and reselect" })
+vim.keymap.set("v", ">", ">gv", { desc = "Indent right and reselect" })
+
+vim.keymap.set("n", "J", "mzJ`z", { desc = "Join lines and keep cursor position" })
+
+vim.keymap.set("n", "<leader>pa", function() -- show file path
+  local path = vim.fn.expand("%:p")
+  vim.fn.setreg("+", path)
+  print("file:", path)
+end, { desc = "Copy full file path" })
+
+vim.keymap.set("n", "<leader>td", function()
+  vim.diagnostic.enable(not vim.diagnostic.is_enabled())
+end, { desc = "Toggle diagnostics" })
+
+vim.keymap.set("n", "<C-a>", "ggVG", { desc = "Select all" })
 
 -- Diagnostics
---[[ keymap.set("n", "<C-J>", function()
-	vim.diagnostic.jump({ count = 1, float = true })
-end, opts) ]]
+vim.keymap.set("n", "<leader>q", function()
+  vim.diagnostic.setloclist({ open = true })
+end, { desc = "Open diagnostic list" })
 
--- Save
-keymap.set({ "i", "x", "n", "s" }, "<C-s>", "<cmd>w<CR>", { desc = "Save File" })
-
--- Move current line up and down
--- Normal Mode
-keymap.set("n", "<A-j>", ":m .+1<CR>==", opts)
-keymap.set("n", "<A-k>", ":m .-2<CR>==", opts)
-
--- Visual Mode
-keymap.set("v", "<A-j>", ":m '>+1<CR>gv=gv", opts)
-keymap.set("v", "<A-k>", ":m '<-2<CR>gv=gv", opts)
-
--- clear search highlights
-keymap.set("n", "<leader>nh", ":nohl<CR>", { desc = "Clear search highlights" })
+vim.keymap.set("n", "<leader>dl", vim.diagnostic.open_float, {
+  desc = "Show line diagnostics",
+})

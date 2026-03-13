@@ -1,0 +1,4 @@
+std = "neovim"
+
+[lints]
+global_usage = "allow"
