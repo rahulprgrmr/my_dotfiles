@@ -65,9 +65,10 @@ alias cat='bat'
 alias ls="eza --color=always --long --git --no-filesize --icons=always --no-time --no-user --no-permissions"
 alias n="nvim"
 alias lg="lazygit"
-alias djsetup='
+alias hiremore-init-db='
 dce backend python manage.py migrate_all && \
 dce backend python manage.py loaddata_all && \
 dce backend python manage.py refresh_template_db && \
-dce backend python manage.py reset_admin_migrations
+dce backend python manage.py reset_admin_migrations && \
+dce backend python manage.py set_tenant_permission --domain hiremore
 '
