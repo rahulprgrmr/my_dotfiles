@@ -4,6 +4,13 @@ vim.pack.add({
 
 local lint = require("lint")
 
+lint.linters.shellcheck.args = {
+	"-x",
+	"--format",
+	"json",
+	"--external-sources",
+}
+
 lint.linters_by_ft = {
 	javascript = { "eslint_d" },
 	typescript = { "eslint_d" },
@@ -13,6 +20,7 @@ lint.linters_by_ft = {
 	python = { "ruff" },
 	html = { "djlint" },
 	lua = { "selene" },
+	sh = { "shellcheck" },
 }
 
 local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })

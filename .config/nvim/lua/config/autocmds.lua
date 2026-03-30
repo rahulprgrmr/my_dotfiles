@@ -103,3 +103,35 @@ vim.api.nvim_create_autocmd("CursorMovedI", {
 		vim.lsp.buf.clear_references()
 	end,
 })
+
+-- set filetype to sh if first line is shebang
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+	pattern = "*",
+	callback = function()
+		local first_line = vim.api.nvim_buf_get_lines(0, 0, 1, false)[1] or ""
+
+		if first_line:match("^#!.*%f[%w]bash%f[%W]") or first_line:match("^#!.*%f[%w]sh%f[%W]") then
+			vim.bo.filetype = "sh"
+		end
+	end,
+})
+
+-- set filetype to sh on typing shebang
+vim.api.nvim_create_autocmd({ "TextChanged", "InsertLeave" }, {
+	pattern = "*",
+	callback = function()
+		if vim.bo.filetype ~= "" then
+			return
+		end
+
+		if vim.api.nvim_win_get_cursor(0)[1] ~= 1 then
+			return
+		end
+
+		local first_line = vim.api.nvim_buf_get_lines(0, 0, 1, false)[1] or ""
+
+		if first_line:match("^#!.*%f[%w]bash%f[%W]") or first_line:match("^#!.*%f[%w]sh%f[%W]") then
+			vim.bo.filetype = "sh"
+		end
+	end,
+})

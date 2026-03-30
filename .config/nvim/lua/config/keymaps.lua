@@ -1,12 +1,12 @@
-vim.g.mapleader = " "      -- space for leader
+vim.g.mapleader = " " -- space for leader
 vim.g.maplocalleader = " " -- space for localleader
 
 -- better movement in wrapped text
 vim.keymap.set("n", "j", function()
-  return vim.v.count == 0 and "gj" or "j"
+	return vim.v.count == 0 and "gj" or "j"
 end, { expr = true, silent = true, desc = "Down (wrap-aware)" })
 vim.keymap.set("n", "k", function()
-  return vim.v.count == 0 and "gk" or "k"
+	return vim.v.count == 0 and "gk" or "k"
 end, { expr = true, silent = true, desc = "Up (wrap-aware)" })
 
 vim.keymap.set("n", "<leader>c", ":nohlsearch<CR>", { desc = "Clear search highlights" })
@@ -45,22 +45,25 @@ vim.keymap.set("v", ">", ">gv", { desc = "Indent right and reselect" })
 vim.keymap.set("n", "J", "mzJ`z", { desc = "Join lines and keep cursor position" })
 
 vim.keymap.set("n", "<leader>pa", function() -- show file path
-  local path = vim.fn.expand("%:p")
-  vim.fn.setreg("+", path)
-  print("file:", path)
+	local path = vim.fn.expand("%:p")
+	vim.fn.setreg("+", path)
+	print("file:", path)
 end, { desc = "Copy full file path" })
 
 vim.keymap.set("n", "<leader>td", function()
-  vim.diagnostic.enable(not vim.diagnostic.is_enabled())
+	vim.diagnostic.enable(not vim.diagnostic.is_enabled())
 end, { desc = "Toggle diagnostics" })
 
 vim.keymap.set("n", "<C-a>", "ggVG", { desc = "Select all" })
 
 -- Diagnostics
 vim.keymap.set("n", "<leader>q", function()
-  vim.diagnostic.setloclist({ open = true })
+	vim.diagnostic.setloclist({ open = true })
 end, { desc = "Open diagnostic list" })
 
 vim.keymap.set("n", "<leader>dl", vim.diagnostic.open_float, {
-  desc = "Show line diagnostics",
+	desc = "Show line diagnostics",
 })
+
+-- Supermaven
+vim.keymap.set("n", "<leader>st", ":SupermavenToggle<CR>", { desc = "Toggle supermaven" })
