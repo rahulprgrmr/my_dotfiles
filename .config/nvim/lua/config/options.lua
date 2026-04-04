@@ -66,13 +66,13 @@ vim.opt.guicursor =
 	"n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor,sm:block-blinkwait175-blinkoff150-blinkon175" -- cursor blinking and settings
 
 -- Folding: requires treesitter available at runtime; safe fallback if not
--- vim.opt.foldmethod = "expr" -- use expression for folding
--- vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()" -- use treesitter for folding
--- vim.opt.foldlevel = 99 -- start with all folds open
+vim.opt.foldmethod = "expr" -- use expression for folding
+vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()" -- use treesitter for folding
+vim.opt.foldlevel = 99 -- start with all folds open
 
 -- IMPORTANT: prevent early treesitter load
-vim.opt.foldmethod = "indent"
-vim.opt.foldlevel = 99
+-- vim.opt.foldmethod = "indent"
+-- vim.opt.foldlevel = 99
 
 vim.opt.splitbelow = true -- horizontal splits go below
 vim.opt.splitright = true -- vertical splits go right

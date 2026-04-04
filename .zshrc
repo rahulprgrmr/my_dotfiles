@@ -123,3 +123,7 @@ function y() {
 	[ "$cwd" != "$PWD" ] && [ -d "$cwd" ] && builtin cd -- "$cwd"
 	rm -f -- "$tmp"
 }
+
+# Added for sesh tmux session manager
+fpath=(~/.zsh/completions $fpath)
+autoload -U compinit && compinit
