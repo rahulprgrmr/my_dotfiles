@@ -149,7 +149,7 @@ local function lsp_on_attach(ev)
 	local opts = { noremap = true, silent = true, buffer = bufnr }
 
 	vim.keymap.set("n", "gd", function()
-		require("fzf-lua").lsp_definitions({ jump_to_single_result = true })
+		require("fzf-lua").lsp_definitions({ jump1 = true })
 	end, opts)
 
 	vim.keymap.set("n", "gD", vim.lsp.buf.definition, opts)
@@ -181,7 +181,7 @@ local function lsp_on_attach(ev)
 	vim.keymap.set("n", "K", vim.lsp.buf.hover, vim.tbl_extend("force", opts, { desc = "Show documentation" }))
 
 	vim.keymap.set("n", "<leader>fd", function()
-		require("fzf-lua").lsp_definitions({ jump_to_single_result = true })
+		require("fzf-lua").lsp_definitions({ jump1 = true })
 	end, opts)
 	vim.keymap.set("n", "<leader>fr", function()
 		require("fzf-lua").lsp_references()
